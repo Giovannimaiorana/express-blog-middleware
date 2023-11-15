@@ -4,9 +4,9 @@ const posts = require("../db/db.json");
 const { kebabCase } = require("lodash");
 
 
-
 //FUNZIONE VISUALIZZAZIONE POST COMPLETI DI DETTAGLI
 function index(req, res) {
+    yivoubpièpo
     res.format({
         html: () => {
             const html = [`<h3> I miei Post </h3>`];
@@ -27,6 +27,22 @@ function index(req, res) {
         }
     })
 }
+//funzione per show
+function show(req, res) {
+    res.format({
+        json: () => {
+            const post = findOrFail(req, res);
+
+            post.image_url = `/posts/${post.slug}/image`;
+
+            post.download_image_url = `/posts/${post.slug}/download`;
+
+            res.send(post);
+        }
+    });
+
+};
+
 //funzione per create 
 function create(req, res) {
     res.format({
@@ -124,6 +140,7 @@ function findOrFail(req, res) {
 module.exports = {
     index,
     create,
+    show,
     store,
     destroy,
     downloadImage
