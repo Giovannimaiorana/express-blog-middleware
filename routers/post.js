@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const postsController = require("../controllers/posts");
 const multer = require("multer");
+const authenticatedUser = require("../middlewares/authenticateUser");
 
 // index
 router.get('/', postsController.index);
 //create
-router.get('/create', postsController.create);
+router.get('/create', authenticatedUser, postsController.create);
 //show
 router.get("/:slug", postsController.show);
 //download 

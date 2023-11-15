@@ -4,9 +4,9 @@ const posts = require("../db/db.json");
 const { kebabCase } = require("lodash");
 
 
+
 //FUNZIONE VISUALIZZAZIONE POST COMPLETI DI DETTAGLI
 function index(req, res) {
-    yivoubpièpo
     res.format({
         html: () => {
             const html = [`<h3> I miei Post </h3>`];

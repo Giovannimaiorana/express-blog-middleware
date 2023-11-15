@@ -1,7 +1,11 @@
 //importazione express
 const express = require("express");
 const dotenv = require("dotenv");
+//route
 const postsRouter = require("./routers/post");
+const adminRouter = require("./routers/admin");
+const authRouter = require("./routers/auth");
+//middlewear
 const errorMiddle = require("./middlewares/error");
 const errorNotFound = require("./middlewares/routeNotFound");
 
@@ -22,6 +26,12 @@ app.get("/", (req, res) => {
 
 //rotte per pizza
 app.use("/posts", postsRouter);
+
+//rotta per admin
+app.use("/admin", adminRouter)
+
+//rotte login
+app.use("/", authRouter);
 
 
 //per errori da inserire sempre come ultimo elemento
