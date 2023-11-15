@@ -12,10 +12,7 @@ module.exports = function (req, res, next) {
 
     //verifico con funzione verify 
     const validToken = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(validToken);
 
-    if (!validToken) {
-        return res.status(404).send("il token non è valido")
-    }
+    req["user"] = validToken;
     next();
 }
